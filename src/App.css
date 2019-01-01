@@ -18,8 +18,88 @@
   color: white;
 }
 
+.resetButton {
+  width: 40%;
+  height: 50px;
+  margin: 10px;
+}
+
+.playersNames {
+  text-align: center;
+}
+
+.playersNames input,
+.playersNames button {
+  width: 90%;
+  height: 30px;
+  margin: 10px 0;
+}
+
+.playersNames input {
+  padding: 0 10px;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+input {
+  width: 90%;
+}
+
+.playerImage {
+  background: url('images/player.png');
+  background-size:100% 100%;
+}
+
+.coinsImage {
+  background: url('images/coin.png');
+  background-size:100% 100%;
+}
+
+.blueCardsImage {
+  background: url('images/blueCards.png');
+  background-size:100% 100%;
+}
+
+.yellowCardsImage {
+  background: url('images/yellowCards.png');
+  background-size:100% 100%;
+}
+
+.purpleCardsImage {
+  background: url('images/purpleCards.png');
+  background-size:100% 100%;
+}
+
+.wondersImage {
+  background: url('images/wonders.png');
+  background-size:100% 100%;
+}
+
+.greenCardsImage {
+  background: url('images/greenCards.png');
+  background-size:100% 100%;
+}
+
+.totalPoints {
+  background: url('images/totalPoints.png');
+  background-size:100% 100%;
+  width: 40px;
+  height: 20px;
+}
+
+.armyImage {
+  background: url('images/army.png');
+  background-size:100% 100%;
+}
+
+table {
+  width: 100%;
+}
+
+textarea:focus, input:focus{
+  outline: none;
 }
 
 @keyframes App-logo-spin {

@@ -1,25 +1,121 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+function getLocalPlayers() {
+  return localStorage.getItem('players') && JSON.parse(localStorage.getItem('players'));
+}
+
 class App extends Component {
+
+  state = {
+    players: getLocalPlayers() || [],
+    categories: [
+      'army',
+      'coins',
+      'wonders',
+      'blueCards',
+      'yellowCards',
+      'purpleCards',
+      'greenCards'
+    ]
+  }
+
+  total = (e) => {
+    const column = document.getElementsByName(e.target.name);
+    let total = 0;
+    
+    column.forEach(e => {
+      if (e.value) {
+        total += parseInt(e.value);
+      }
+    });
+    
+    const totalElement = document.getElementById(`${e.target.name}Score`);
+    totalElement.innerHTML = total;
+  }
+
+  savePlayers = () => {
+    const playerNames = document.getElementsByName('playerName');
+    const players = [];
+
+    playerNames.forEach(playerName => {
+      if (playerName.value) {
+        players.push(playerName.value);
+      }
+    });
+    localStorage.setItem('players', JSON.stringify(players));
+
+    this.setState({
+      players
+    });
+  }
+
+  resetScore = () => {
+    const inputs = document.querySelectorAll('input[type="number"]');
+    inputs.forEach(input => input.value = "");
+
+    const playersScores = document.querySelectorAll('.playerScore');
+    playersScores.forEach(e => e.innerHTML = "");
+  }
+
+  resetPlayers = () => {
+    localStorage.removeItem('players');
+  
+    this.setState({
+      players: []
+    })
+  }
+
   render() {
+    if (!this.state.players.length) {
+      return (
+        <div className="playersNames">
+          <input name="playerName" placeholder="Name" />
+          <input name="playerName" placeholder="Name" />
+          <input name="playerName" placeholder="Name" />
+          <input name="playerName" placeholder="Name" />
+          <input name="playerName" placeholder="Name" />
+          <input name="playerName" placeholder="Name" />
+          <input name="playerName" placeholder="Name" />
+
+          <button onClick={() => this.savePlayers()}> Save </button>
+        </div>
+      )
+    }
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <table border="1" cellPadding="0" cellSpacing="0">
+          <tbody>
+            <tr>
+              <td className="playerImage"></td>
+              { this.state.players.map(player => <td key={player}>{player}</td>) }
+            </tr>
+            {
+              this.state.categories.map((category) => (
+                <tr key={category}>
+                  <td className={`${category}Image`}></td>
+                  { 
+                    this.state.players.map((player) => 
+                      <td key={player}>
+                        <input 
+                          type="number" 
+                          name={`${player}`} 
+                          onChange={this.total} />
+                      </td>
+                    )
+                  }
+                </tr>
+              ))
+            }
+            <tr>
+            <td className="totalPoints"></td>
+              { this.state.players.map(player => <td key={player} id={`${player}Score`} className="playerScore"></td>) }
+            </tr>
+          </tbody>
+        </table>
+        <button onClick={() => this.resetScore()} className="resetButton">Reset Score</button>
+        <button onClick={() => this.resetPlayers()} className="resetButton">Reset Players</button>
       </div>
     );
   }
