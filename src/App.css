@@ -98,6 +98,10 @@ table {
   width: 100%;
 }
 
+table input {
+  border: 0;
+}
+
 textarea:focus, input:focus{
   outline: none;
 }
