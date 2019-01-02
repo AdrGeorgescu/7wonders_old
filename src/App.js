@@ -20,7 +20,15 @@ class App extends Component {
     ]
   }
 
+  isNumeric = (input) => {
+    const RE = /^-{0,1}\d*\.{0,1}\d+$/;
+    return (RE.test(input));
+}
+
   total = (e) => {
+    // remove any non numeric characters
+    e.target.value = e.target.value.replace(/[^\d]+/g,'');
+    
     const column = document.getElementsByName(e.target.name);
     let total = 0;
     
@@ -51,7 +59,7 @@ class App extends Component {
   }
 
   resetScore = () => {
-    const inputs = document.querySelectorAll('input[type="number"]');
+    const inputs = document.querySelectorAll('table input[type="text"]');
     inputs.forEach(input => input.value = "");
 
     const playersScores = document.querySelectorAll('.playerScore');
@@ -99,7 +107,7 @@ class App extends Component {
                     this.state.players.map((player) => 
                       <td key={player}>
                         <input 
-                          type="number" 
+                          type="text" 
                           name={`${player}`} 
                           onChange={this.total} />
                       </td>
