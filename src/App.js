@@ -102,7 +102,7 @@ class App extends Component {
             {
               this.state.categories.map((category) => (
                 <tr key={category}>
-                  <td className={`${category}Image`}></td>
+                  <td className={`${category}Image firstColumn`}></td>
                   { 
                     this.state.players.map((player) => 
                       <td key={player}>
