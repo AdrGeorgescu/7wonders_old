@@ -109,7 +109,7 @@ class App extends Component {
                         <input 
                           type="number" 
                           name={`${player}`} 
-                          pattern="[0-9]*"
+                          pattern="-?[0-9]*"
                           step="1"
                           onChange={this.total} />
                       </td>
