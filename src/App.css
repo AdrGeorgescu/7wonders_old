@@ -35,10 +35,6 @@ input[type="submit"] {
   color: #61dafb;
 }
 
-input {
-  width: 90%;
-}
-
 .playerImage {
   background: url('images/player.png');
   background-size:100% 100%;
