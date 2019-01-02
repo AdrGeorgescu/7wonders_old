@@ -59,7 +59,7 @@ class App extends Component {
   }
 
   resetScore = () => {
-    const inputs = document.querySelectorAll('table input[type="text"]');
+    const inputs = document.querySelectorAll('table input[type="number"]');
     inputs.forEach(input => input.value = "");
 
     const playersScores = document.querySelectorAll('.playerScore');
@@ -107,8 +107,10 @@ class App extends Component {
                     this.state.players.map((player) => 
                       <td key={player}>
                         <input 
-                          type="text" 
+                          type="number" 
                           name={`${player}`} 
+                          pattern="[0-9]*"
+                          step="1"
                           onChange={this.total} />
                       </td>
                     )
