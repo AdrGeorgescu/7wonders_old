@@ -26,9 +26,6 @@ class App extends Component {
 }
 
   total = (e) => {
-    // remove any non numeric characters
-    e.target.value = e.target.value.replace(/[^\d]+/g,'');
-    
     const column = document.getElementsByName(e.target.name);
     let total = 0;
     
@@ -109,7 +106,6 @@ class App extends Component {
                         <input 
                           type="number" 
                           name={`${player}`} 
-                          pattern="-?[0-9]*"
                           step="1"
                           onChange={this.total} />
                       </td>
