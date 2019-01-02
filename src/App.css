@@ -13,6 +13,13 @@ input::-webkit-inner-spin-button {
 }
 .App {
   text-align: center;
+  max-width: 768px;
+  margin: 10px auto;
+}
+
+.winner {
+  background-color: tomato;
+  color: #fff;
 }
 
 .firstColumn {

@@ -120,8 +120,16 @@ class App extends Component {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => this.resetScore()} className="resetButton">Reset Score</button>
-        <button onClick={() => this.resetPlayers()} className="resetButton">Reset Players</button>
+        <button 
+          onClick={() => this.resetScore()} 
+          className="resetButton">
+            Reset Score
+        </button>
+        <button 
+          onClick={() => this.resetPlayers()} 
+          className="resetButton">
+            Reset Players
+        </button>
       </div>
     );
   }
