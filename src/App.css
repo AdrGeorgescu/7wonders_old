@@ -8,9 +8,14 @@ input[type="submit"] {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
+
+table {
+  border-collapse: collapse;
+}
+
 .App {
   text-align: center;
   max-width: 768px;
@@ -23,7 +28,7 @@ input::-webkit-inner-spin-button {
 }
 
 .firstColumn {
-  min-width: 40px;
+  min-width: 45px;
 }
 
 .resetButton {
