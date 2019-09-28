@@ -18,12 +18,7 @@ class App extends Component {
       'purpleCards',
       'greenCards'
     ]
-  }
-
-  isNumeric = (input) => {
-    const RE = /^-{0,1}\d*\.{0,1}\d+$/;
-    return (RE.test(input));
-  }
+  };
 
   total = (e) => {
     const column = document.getElementsByName(e.target.name);
@@ -37,7 +32,7 @@ class App extends Component {
     
     const totalElement = document.getElementById(`${e.target.name}Score`);
     totalElement.innerHTML = total;
-  }
+  };
 
   savePlayers = () => {
     const playerNames = document.getElementsByName('playerName');
@@ -53,7 +48,7 @@ class App extends Component {
     this.setState({
       players
     });
-  }
+  };
 
   resetScore = () => {
     const inputs = document.querySelectorAll('table input[type="number"]');
@@ -61,7 +56,7 @@ class App extends Component {
 
     const playersScores = document.querySelectorAll('.playerScore');
     playersScores.forEach(e => e.innerHTML = "");
-  }
+  };
 
   resetPlayers = () => {
     localStorage.removeItem('players');
@@ -69,11 +64,12 @@ class App extends Component {
     this.setState({
       players: []
     })
-  }
+  };
 
-  goToTop = () => {
+  goToTop = (e) => {
+      e.preventDefault();
       window.scrollTo(0, 0);
-  }
+  };
 
   render() {
     if (!this.state.players.length) {
