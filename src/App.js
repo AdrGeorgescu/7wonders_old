@@ -23,7 +23,7 @@ class App extends Component {
   isNumeric = (input) => {
     const RE = /^-{0,1}\d*\.{0,1}\d+$/;
     return (RE.test(input));
-}
+  }
 
   total = (e) => {
     const column = document.getElementsByName(e.target.name);
@@ -71,6 +71,10 @@ class App extends Component {
     })
   }
 
+  goToTop = () => {
+      window.scrollTo(0, 0);
+  }
+
   render() {
     if (!this.state.players.length) {
       return (
@@ -93,13 +97,13 @@ class App extends Component {
         <table border="1" cellPadding="0" cellSpacing="0">
           <tbody>
             <tr>
-              <td className="playerImage"></td>
+              <td className="playerImage" />
               { this.state.players.map(player => <td key={player}>{player}</td>) }
             </tr>
             {
               this.state.categories.map((category) => (
                 <tr key={category}>
-                  <td className={`${category}Image firstColumn`}></td>
+                  <td className={`${category}Image firstColumn`} />
                   { 
                     this.state.players.map((player) => 
                       <td key={player}>
@@ -107,6 +111,7 @@ class App extends Component {
                           type="number" 
                           name={`${player}`} 
                           step="1"
+                          onClick={this.goToTop}
                           onChange={this.total} />
                       </td>
                     )
@@ -115,8 +120,8 @@ class App extends Component {
               ))
             }
             <tr>
-            <td className="totalPoints"></td>
-              { this.state.players.map(player => <td key={player} id={`${player}Score`} className="playerScore"></td>) }
+            <td className="totalPoints" />
+              { this.state.players.map(player => <td key={player} id={`${player}Score`} className="playerScore" />) }
             </tr>
           </tbody>
         </table>
