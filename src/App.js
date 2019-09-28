@@ -66,11 +66,6 @@ class App extends Component {
     })
   };
 
-  goToTop = (e) => {
-      e.preventDefault();
-      window.scrollTo(0, 0);
-  };
-
   render() {
     if (!this.state.players.length) {
       return (
@@ -88,14 +83,17 @@ class App extends Component {
       )
     }
 
+    const renderPlayerNmaes =
+        <tr>
+          <td className="playerImage" />
+          { this.state.players.map(player => <td key={player}>{player}</td>) }
+        </tr>;
+
     return (
       <div className="App">
         <table border="1" cellPadding="0" cellSpacing="0">
           <tbody>
-            <tr>
-              <td className="playerImage" />
-              { this.state.players.map(player => <td key={player}>{player}</td>) }
-            </tr>
+            {renderPlayerNmaes}
             {
               this.state.categories.map((category) => (
                 <tr key={category}>
@@ -107,7 +105,6 @@ class App extends Component {
                           type="number" 
                           name={`${player}`} 
                           step="1"
-                          onClick={this.goToTop}
                           onChange={this.total} />
                       </td>
                     )
@@ -116,9 +113,10 @@ class App extends Component {
               ))
             }
             <tr>
-            <td className="totalPoints" />
+              <td className="totalPoints" />
               { this.state.players.map(player => <td key={player} id={`${player}Score`} className="playerScore" />) }
             </tr>
+            {renderPlayerNmaes}
           </tbody>
         </table>
         <button 
