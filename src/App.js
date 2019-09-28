@@ -83,17 +83,19 @@ class App extends Component {
       )
     }
 
+    const windowWidth = window.innerWidth > 768 ? 768 : window.innerWidth; 
+    const playerWidth = ((windowWidth - 41) / this.state.players.length);
+    
     const renderPlayerNmaes =
-        <tr>
-          <td className="playerImage" />
-          { this.state.players.map(player => <td key={player}>{player}</td>) }
-        </tr>;
+        <div className="playersContaier">
+          { this.state.players.map(player => <div key={player} className="playerName" style={{width: `${playerWidth}px` }}>{player}</div>) }
+        </div>;
 
     return (
       <div className="App">
+        {renderPlayerNmaes}
         <table border="1" cellPadding="0" cellSpacing="0">
           <tbody>
-            {renderPlayerNmaes}
             {
               this.state.categories.map((category) => (
                 <tr key={category}>
@@ -116,7 +118,6 @@ class App extends Component {
               <td className="totalPoints" />
               { this.state.players.map(player => <td key={player} id={`${player}Score`} className="playerScore" />) }
             </tr>
-            {renderPlayerNmaes}
           </tbody>
         </table>
         <button 

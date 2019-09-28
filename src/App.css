@@ -126,3 +126,14 @@ textarea:focus, input:focus{
     transform: rotate(360deg);
   }
 }
+
+.playerName {
+  float: left;
+}
+
+.playersContaier {
+  margin-left: 41px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
