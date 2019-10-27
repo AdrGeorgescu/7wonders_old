@@ -127,13 +127,8 @@ textarea:focus, input:focus{
   }
 }
 
-.playerName {
-  float: left;
-}
-
-.playersContaier {
-  margin-left: 41px;
-  position: -webkit-sticky; /* Safari */
+th {
   position: sticky;
-  top: 0;
+  top: 0px;
+  background: white;
 }
